@@ -1,0 +1,69 @@
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0.5rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    nav ul.show {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0.2rem 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        margin: 0;
+    }
+    
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .banner {
+        height: 300px;
+    }
+    
+    .banner-text {
+        left: 20px;
+        bottom: 20px;
+        padding: 1rem;
+    }
+    
+    .banner-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .products {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none;
+    }
+}
