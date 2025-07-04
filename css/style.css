@@ -17,7 +17,7 @@ a {
     color: #0066cc;
 }
 
-/* Header Styles */
+/* Header Styles for Desktop */
 header {
     background-color: #2c3e50;
     color: white;
@@ -25,6 +25,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Penting untuk positioning nav dan hamburger */
+    z-index: 100; /* Default z-index untuk header */
 }
 
 .logo h1 {
@@ -38,7 +40,7 @@ header {
 }
 
 nav ul {
-    display: flex;
+    display: flex; /* Default: flex untuk desktop */
     list-style: none;
 }
 
@@ -54,6 +56,52 @@ nav ul li a:hover, nav ul li a.active {
     background-color: #3498db;
 }
 
+/* Hamburger Menu - Hidden by default on Desktop */
+.hamburger-menu {
+    display: none; /* Sembunyikan di desktop */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+    padding: 0.5rem;
+    background-color: #3498db; /* Warna background agar menonjol */
+    border-radius: 4px;
+    line-height: 1; /* Penting untuk pemusatan ikon */
+    z-index: 101; /* Pastikan di atas header dan nav di mobile */
+}
+
+/* Dropdown Menu (Desktop) */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 0 0 4px 4px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 /* Banner Styles */
 .banner {
     position: relative;
@@ -65,7 +113,8 @@ nav ul li a:hover, nav ul li a.active {
 .banner img {
     width: 100%;
     height: 100%;
-    object-fit:contain;
+    object-fit: cover;
+    object-position: center;
 }
 
 .banner-text {
@@ -75,6 +124,7 @@ nav ul li a:hover, nav ul li a.active {
     color: white;
     padding: 1.5rem;
     border-radius: 5px;
+    max-width: 70%;
 }
 
 .banner-text h2 {
@@ -98,13 +148,13 @@ nav ul li a:hover, nav ul li a.active {
 
 /* Product Styles */
 .featured {
-    padding: 2rem;
-    width: 1000px;
+    padding: 2rem 1rem;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
 }
 
-.featured h2, .category-section h2 {
+.featured h2, .category-section h2, .tutorial-section h2 {
     text-align: center;
     margin-bottom: 2rem;
     font-size: 1.8rem;
@@ -138,12 +188,18 @@ nav ul li a:hover, nav ul li a.active {
 .product-card h3 {
     padding: 0.8rem;
     font-size: 1.1rem;
+    min-height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .product-card p {
     padding: 0 0.8rem;
     font-weight: bold;
     color: #e74c3c;
+    margin-bottom: 0.5rem;
 }
 
 .product-card button {
@@ -156,6 +212,40 @@ nav ul li a:hover, nav ul li a.active {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/* Tutorial Section */
+.tutorial-section {
+    padding: 2rem;
+    background-color: #f1f1f1;
+    margin: 2rem 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.tutorial-card {
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-card img {
+    width: 40%;
+    object-fit: cover;
+}
+
+.tutorial-content {
+    padding: 1.5rem;
+    width: 60%;
+}
+
+.tutorial-content h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
 }
 
 /* Footer Styles */
@@ -192,7 +282,13 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Page Specific Styles */
+/* Page Specific Styles (News, About, Career) */
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
 .news-article {
     background: white;
     padding: 1.5rem;
@@ -216,6 +312,7 @@ footer {
     width: 50%;
     max-height: 400px;
     margin: auto;
+    display: block;
 }
 
 .read-more {
@@ -298,80 +395,6 @@ footer {
     font-size: 1rem;
 }
 
-/* Dropdown Menu */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 0 0 4px 4px;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-.dropdown-content a:hover {
-    background-color: #3498db;
-    color: white;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Tutorial Section */
-.tutorial-section {
-    padding: 2rem;
-    background-color: #f1f1f1;
-    margin: 2rem 0;
-}
-
-.tutorial-card {
-    display: flex;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.tutorial-card img {
-    width: 40%;
-    object-fit: cover;
-}
-
-.tutorial-content {
-    padding: 1.5rem;
-    width: 60%;
-}
-
-.tutorial-content h3 {
-    color: #2c3e50;
-    margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-    .tutorial-card {
-        flex-direction: column;
-    }
-    
-    .tutorial-card img,
-    .tutorial-content {
-        width: 100%;
-    }
-}
-
 /* Isi page About */
 .about-isi {
     background: white;
@@ -380,4 +403,208 @@ footer {
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     margin: 1rem auto;
+    max-width: 900px;
+}
+
+/* --- Responsive Styles --- */
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        flex-wrap: nowrap;
+        height: 60px;
+        z-index: 100; /* Match header z-index */
+    }
+
+    .logo {
+        width: auto;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    /* CRITICAL: Ensure hamburger menu is visible and on top */
+    .hamburger-menu {
+        display: block !important; /* Added !important for debugging */
+        position: relative;
+        z-index: 101 !important; /* Added !important for debugging */
+    }
+
+    /* CRITICAL: Nav must be hidden by default and appear on 'show' class */
+    nav {
+        display: none !important; /* Hidden by default */
+        position: absolute;
+        top: 60px; /* Place it right below the header's height */
+        left: 0;
+        width: 100%;
+        background-color: #2c3e50;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 99 !important; /* Below hamburger but above regular content */
+        overflow-y: auto; /* Allow scrolling if menu is too long */
+        max-height: calc(100vh - 60px); /* Limit height to viewport - header height */
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        display: none !important; /* Sembunyikan juga ul secara default di mobile */
+    }
+
+    nav.show {
+        display: flex !important; /* Make it visible when 'show' class is added */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav.show ul {
+        display: flex !important; 
+    }
+
+    nav ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    nav ul li a {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+        display: block;
+        color: white;
+    }
+
+    /* Dropdown in Mobile */
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background-color: #3a536b;
+        width: 100%;
+        display: none !important; /* Added !important for debugging */
+    }
+
+    .dropdown-content.show-dropdown {
+        display: block !important;
+    }
+
+    .dropdown-content a {
+        padding-left: 2rem;
+        color: white;
+    }
+
+    /* Banner Styles for Mobile */
+    .banner {
+        height: 250px;
+    }
+
+    .banner-text {
+        left: 20px;
+        bottom: 20px;
+        padding: 1rem;
+        max-width: 90%;
+        text-align: center;
+        width: calc(100% - 40px);
+    }
+
+    .banner-text h2 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .banner-text p {
+        font-size: 0.9rem;
+        display: none;
+    }
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Product Grid for Mobile */
+    .products {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .product-card h3 {
+        min-height: auto;
+    }
+
+    /* Footer for Mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    /* Page Specific Styles for Mobile */
+    main {
+        margin: 1.5rem 1rem;
+        padding: 0;
+    }
+
+    .profile-card, .about-isi {
+        padding: 1.5rem;
+        margin: 1.5rem 1rem;
+    }
+
+    .news-article img {
+        width: 100%;
+        height: auto;
+    }
+
+    .tutorial-card {
+        flex-direction: column;
+    }
+
+    .tutorial-card img,
+    .tutorial-content {
+        width: 100%;
+    }
+    .tutorial-section {
+        padding: 1rem;
+        margin: 1rem;
+    }
+}
+
+/* Desktop-specific styles (Override mobile styles for larger screens) */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none; /* Sembunyikan hamburger di desktop */
+    }
+    nav {
+        display: block !important; /* Pastikan nav selalu terlihat di desktop */
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        z-index: auto;
+        overflow-y: visible;
+        max-height: none;
+    }
+    nav ul {
+        display: flex; /* Pastikan nav ul flex di desktop */
+    }
+    .dropdown-content {
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        display: none;
+    }
+    /* Untuk konten utama di desktop, pastikan max-width dan centering */
+    .featured, .tutorial-section, main {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+    }
+    .about-isi {
+        max-width: 900px;
+    }
 }
